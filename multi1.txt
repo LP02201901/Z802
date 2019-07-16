@@ -1,0 +1,7 @@
+#LD	B,3
+#LD	C,4
+#LD	A,0
+for#ADD	A,B
+#DEC	C
+#JP	NZ,for
+#LD	D,A

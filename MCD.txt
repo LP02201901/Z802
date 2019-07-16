@@ -1,0 +1,19 @@
+#LD	C,AA
+#LD	B,58
+bucle#LD	A,C
+#CP	B
+#JP	Z,fin
+#JP	M,menor
+#LD	A,C
+#SUB	B
+#LD	C,A
+#JP	bucle
+menor#LD	A,B
+#SUB	C
+#LD	B,A
+#JP	bucle
+fin#LD	(00FF),A
+#LD	L,FF
+#LD	H,00
+#LD	E,(HL)
+#HALT

@@ -1,0 +1,4 @@
+#LD	A,5
+#LD	B,7
+#ADD	A,B
+#HALT
