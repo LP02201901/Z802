@@ -13,6 +13,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import java.io.File;
+import java.io.FileWriter;
 
 public class interfazProcesadorZ80 extends javax.swing.JFrame {
 
@@ -42,8 +44,6 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        codigoFuente = new javax.swing.JTextArea();
         panelR = new javax.swing.JPanel();
         regL = new javax.swing.JLabel();
         regH = new javax.swing.JLabel();
@@ -113,22 +113,29 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
         PC = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         SP = new javax.swing.JLabel();
-        tituloCaja = new javax.swing.JLabel();
         txtBuffer = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        cargarCodigo = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        resetButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        codigoFuenteAlto = new javax.swing.JTextArea();
+        tituloCaja1 = new javax.swing.JLabel();
+        cargarCodigo1 = new javax.swing.JButton();
+        completoPaso1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         pasoPaso = new javax.swing.JButton();
         completoPaso = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        codigoFuenteAssm = new javax.swing.JTextArea();
+        tituloCaja = new javax.swing.JLabel();
+        cargarCodigo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("EmulatorZ80");
         setMinimumSize(new java.awt.Dimension(1300, 650));
         setResizable(false);
-
-        codigoFuente.setColumns(20);
-        codigoFuente.setRows(5);
-        jScrollPane1.setViewportView(codigoFuente);
 
         regL.setText("FFh");
 
@@ -598,20 +605,75 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
                 .addGap(27, 27, 27))
         );
 
-        tituloCaja.setFont(new java.awt.Font("Bookman Old Style", 2, 14)); // NOI18N
-        tituloCaja.setText("Ingrese aquí su codigo");
-
         txtBuffer.setText("FFh");
 
         jLabel31.setFont(new java.awt.Font("Bookman Old Style", 2, 14)); // NOI18N
         jLabel31.setText("Buffer");
 
-        cargarCodigo.setText("Cargar Codigo");
-        cargarCodigo.addActionListener(new java.awt.event.ActionListener() {
+        resetButton1.setText("Reset");
+        resetButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargarCodigoActionPerformed(evt);
+                resetButton1ActionPerformed(evt);
             }
         });
+
+        codigoFuenteAlto.setColumns(20);
+        codigoFuenteAlto.setRows(5);
+        jScrollPane2.setViewportView(codigoFuenteAlto);
+
+        tituloCaja1.setFont(new java.awt.Font("Bookman Old Style", 2, 14)); // NOI18N
+        tituloCaja1.setText("Ingrese aquí su codigo en alto nivel");
+
+        cargarCodigo1.setText("Cargar Codigo");
+        cargarCodigo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargarCodigo1ActionPerformed(evt);
+            }
+        });
+
+        completoPaso1.setText("Ejecucion Completa");
+        completoPaso1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                completoPaso1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cargarCodigo1)
+                        .addGap(18, 18, 18)
+                        .addComponent(completoPaso1)
+                        .addGap(18, 18, 18)
+                        .addComponent(resetButton1)
+                        .addGap(133, 133, 133))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(tituloCaja1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tituloCaja1)
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cargarCodigo1)
+                    .addComponent(completoPaso1)
+                    .addComponent(resetButton1))
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Alto Nivel", jPanel2);
 
         pasoPaso.setText("Ejecucion Paso a Paso");
         pasoPaso.addActionListener(new java.awt.event.ActionListener() {
@@ -633,6 +695,62 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
                 resetButtonActionPerformed(evt);
             }
         });
+
+        codigoFuenteAssm.setColumns(20);
+        codigoFuenteAssm.setRows(5);
+        jScrollPane1.setViewportView(codigoFuenteAssm);
+
+        tituloCaja.setFont(new java.awt.Font("Bookman Old Style", 2, 14)); // NOI18N
+        tituloCaja.setText("Ingrese aquí su codigo en assembler");
+
+        cargarCodigo.setText("Cargar Codigo");
+        cargarCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargarCodigoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cargarCodigo)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(resetButton)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(pasoPaso)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(completoPaso)))
+                        .addGap(63, 63, 63))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(tituloCaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tituloCaja)
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cargarCodigo)
+                    .addComponent(pasoPaso)
+                    .addComponent(completoPaso))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(resetButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Assembler", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -667,33 +785,20 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtBuffer, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tituloCaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE))
-                        .addGap(50, 50, 50))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cargarCodigo)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(resetButton)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(pasoPaso)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(completoPaso)))
-                        .addGap(113, 113, 113))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1)
+                .addGap(46, 46, 46))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(tituloCaja)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -714,94 +819,25 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
                         .addGap(108, 108, 108)
                         .addComponent(jLabel31)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBuffer))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cargarCodigo)
-                            .addComponent(pasoPaso)
-                            .addComponent(completoPaso))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(resetButton)
-                .addContainerGap())
+                        .addComponent(txtBuffer)))
+                .addGap(558, 558, 558))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cargarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarCodigoActionPerformed
-        boolean bool =true;
-        //System.out.println("<"+codigoFuente.getText()+">");
-        codigoFuente.setEditable(false);
-        PrintWriter pw;
-        FileWriter guardado ;
-        
-        try {
-            guardado = new FileWriter("archivo.txt");
-            pw = new PrintWriter(guardado);
-            codigoFuente.write(pw);
-        } catch (IOException ex) {
-            Logger.getLogger(interfazProcesadorZ80.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        try {
-            procesador.almacenar();
-            //cargar debera realizarse despues del linker
-        } catch (Exception ex){//IOException ex) {
-            System.out.println("paso  por catch");
-            JOptionPane.showMessageDialog(rootPane, "El archivo no fue guardado con éxito en la ruta establecida");
-            codigoFuente.setEditable(true);
-            bool = false;
-            Logger.getLogger(interfazProcesadorZ80.class.getName()).log(Level.SEVERE, null, ex);
-            
-        }
-        if(bool){
-            JOptionPane.showMessageDialog(rootPane, "El archivo fue guardado con éxito en la ruta establecida");
-            this.setEnabled(false);
-            new enlazador(this, true).setVisible(true);        
-            numeroLines = procesador.getPC();
-            setearCodigo(0);
-            try {
-                cargarLineas();
-            } catch (IOException ex) {
-                Logger.getLogger(interfazProcesadorZ80.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            cargarCodigo.setEnabled(false);
-            this.setEnabled(true);
-        
-            pasoPaso.setEnabled(true);
-            completoPaso.setEnabled(true);
-        
-            //RAM.ram();
-            memor.setVisible(true);
-            memor.llenarMemoria(procesador.getMemo1(), procesador.getPos1(),procesador.getMemoria());
-            //pastilla.setteardireciones();
-        }
-    }//GEN-LAST:event_cargarCodigoActionPerformed
-
-    private void pasoPasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasoPasoActionPerformed
-        cadenaMemoria = procesador.nucleo();
-        //System.out.println(cadenaMemoria);
-        settearRegistros();
-        
-        if (cadenaMemoria == null) {
-            cargarCodigo.setEnabled(true);
-            pasoPaso.setEnabled(false);
-            completoPaso.setEnabled(false);
-        }
-        //RAM.ram();
-        memor.llenarMemoria(procesador.getMemoria(), procesador.getPos1());
-        //memor.llenarMemoria(procesador.getMemo1(),procesador.getPos1(),procesador.getMemoria());
-        //pastilla.setteardireciones();
-        numeroLines = Integer.parseInt(lineasEtiquetas.get(procesador.getPC()+"&"));
-
-        setearCodigo(numeroLines);
-
-    }//GEN-LAST:event_pasoPasoActionPerformed
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        procesador.initEmul();
+        codigoFuenteAssm.setEditable(true);
+        codigoFuenteAssm.setText("");
+        memor.rst();
+        cargarCodigo.setEnabled(true);
+        pasoPaso.setEnabled(false);
+        completoPaso.setEnabled(false);
+    }//GEN-LAST:event_resetButtonActionPerformed
 
     private void completoPasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completoPasoActionPerformed
-        do {            
+        do {
             cadenaMemoria = procesador.nucleo();
             settearRegistros();
             //numeroLines++;
@@ -820,15 +856,108 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
         //procesador.getMemoria());
     }//GEN-LAST:event_completoPasoActionPerformed
 
-    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
-        procesador.initEmul();
-        codigoFuente.setEditable(true);
-        codigoFuente.setText("");
-        memor.rst();
-        cargarCodigo.setEnabled(true);
-        pasoPaso.setEnabled(false);
-        completoPaso.setEnabled(false);
-    }//GEN-LAST:event_resetButtonActionPerformed
+    private void pasoPasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasoPasoActionPerformed
+        cadenaMemoria = procesador.nucleo();
+        //System.out.println(cadenaMemoria);
+        settearRegistros();
+
+        if (cadenaMemoria == null) {
+            cargarCodigo.setEnabled(true);
+            pasoPaso.setEnabled(false);
+            completoPaso.setEnabled(false);
+        }
+        //RAM.ram();
+        memor.llenarMemoria(procesador.getMemoria(), procesador.getPos1());
+        //memor.llenarMemoria(procesador.getMemo1(),procesador.getPos1(),procesador.getMemoria());
+        //pastilla.setteardireciones();
+        numeroLines = Integer.parseInt(lineasEtiquetas.get(procesador.getPC()+"&"));
+
+        setearCodigo(numeroLines);
+    }//GEN-LAST:event_pasoPasoActionPerformed
+
+    private void cargarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarCodigoActionPerformed
+        boolean bool =true;
+        //System.out.println("<"+codigoFuente.getText()+">");
+        codigoFuenteAssm.setEditable(false);
+        PrintWriter pw;
+        FileWriter guardado ;
+
+        try {
+            guardado = new FileWriter("archivo.txt");
+            pw = new PrintWriter(guardado);
+            codigoFuenteAssm.write(pw);
+        } catch (IOException ex) {
+            Logger.getLogger(interfazProcesadorZ80.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            procesador.almacenar();
+            //cargar debera realizarse despues del linker
+        } catch (Exception ex){//IOException ex) {
+            System.out.println("paso  por catch");
+            JOptionPane.showMessageDialog(rootPane, "El archivo no fue guardado con éxito en la ruta establecida");
+            codigoFuenteAssm.setEditable(true);
+            bool = false;
+            Logger.getLogger(interfazProcesadorZ80.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        if(bool){
+            JOptionPane.showMessageDialog(rootPane, "El archivo fue guardado con éxito en la ruta establecida");
+            this.setEnabled(false);
+            new enlazador(this, true).setVisible(true);
+            numeroLines = procesador.getPC();
+            setearCodigo(0);
+            try {
+                cargarLineas();
+            } catch (IOException ex) {
+                Logger.getLogger(interfazProcesadorZ80.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            cargarCodigo.setEnabled(false);
+            this.setEnabled(true);
+
+            pasoPaso.setEnabled(true);
+            completoPaso.setEnabled(true);
+
+            //RAM.ram();
+            memor.setVisible(true);
+            memor.llenarMemoria(procesador.getMemo1(), procesador.getPos1(),procesador.getMemoria());
+            //pastilla.setteardireciones();
+        }
+    }//GEN-LAST:event_cargarCodigoActionPerformed
+
+    private void completoPaso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completoPaso1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_completoPaso1ActionPerformed
+
+    private void resetButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_resetButton1ActionPerformed
+
+    private void cargarCodigo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarCodigo1ActionPerformed
+        boolean bool =true;
+        //System.out.println("<"+codigoFuente.getText()+">");
+        codigoFuenteAlto.setEditable(false);
+        PrintWriter pw;
+        FileWriter guardado ;
+
+        try {
+            guardado = new FileWriter("altonivel.txt");
+            pw = new PrintWriter(guardado);
+            codigoFuenteAlto.write(pw);
+        } catch (IOException ex) {
+            Logger.getLogger(interfazProcesadorZ80.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            procesador.almacenar();
+        } catch (Exception ex){//IOException ex) {
+            JOptionPane.showMessageDialog(rootPane, "El archivo no fue guardado con éxito en la ruta establecida");
+        }
+        if(bool){
+            JOptionPane.showMessageDialog(rootPane, "El archivo fue guardado con éxito en la ruta establecida");
+        }
+
+    }//GEN-LAST:event_cargarCodigo1ActionPerformed
 
     public static void main(String args[]) throws IOException {
         /* Set the Nimbus look and feel */
@@ -1076,7 +1205,7 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
     
     public void setearCodigo(int line){
         String lineas = "";
-        String []codigo = codigoFuente.getText().split("\n");
+        String []codigo = codigoFuenteAssm.getText().split("\n");
         for (int i = 0; i < codigo.length; i++) {
             codigo[i] = codigo[i].replace("<<<<< ULTIMO >>>>>", "");
             if (line==i) {
@@ -1090,7 +1219,7 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
                 }
             }
         }
-        codigoFuente.setText(lineas);
+        codigoFuenteAssm.setText(lineas);
     }
     
     public void cargarLineas() throws FileNotFoundException, IOException{
@@ -1134,8 +1263,11 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
     private javax.swing.JLabel PC;
     private javax.swing.JLabel SP;
     private javax.swing.JButton cargarCodigo;
-    private javax.swing.JTextArea codigoFuente;
+    private javax.swing.JButton cargarCodigo1;
+    private javax.swing.JTextArea codigoFuenteAlto;
+    private javax.swing.JTextArea codigoFuenteAssm;
     private javax.swing.JButton completoPaso;
+    private javax.swing.JButton completoPaso1;
     private javax.swing.JPanel contadores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1170,7 +1302,11 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel panelA;
     private javax.swing.JPanel panelF;
     private javax.swing.JPanel panelFauxiliar;
@@ -1207,7 +1343,9 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
     private javax.swing.JLabel regL;
     private javax.swing.JLabel regLo;
     private javax.swing.JButton resetButton;
+    private javax.swing.JButton resetButton1;
     private javax.swing.JLabel tituloCaja;
+    private javax.swing.JLabel tituloCaja1;
     private javax.swing.JLabel txtBuffer;
     // End of variables declaration//GEN-END:variables
 
