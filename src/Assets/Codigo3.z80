@@ -1,20 +1,25 @@
 ALGORITMO pruebas(a, b, c):
 {
 	/* comentario simple */
-        /* multilinea
+	/* múltilinea
 		comentando	*/
+
 
 	#Probando condicional IF
 	a = 1;
 	si (a>2) entonces{
 		imprimirPantalla("hola");
-	} 
+	}
 	si_no si a==1{
-		imprimirPantalla(a);
+	    w = 5;
+	    imprimirPantalla(w);
+	    imprimirPantalla(a);
 	}
 	si_no {
 		imprimirPantalla(5);
 	}
+	imprimirPantalla("w " + w);
+
 
 	#########################
 	#Probando el iterador WHILE
@@ -22,7 +27,11 @@ ALGORITMO pruebas(a, b, c):
 	mientras a>2{
 		a=a-1;
 		imprimirPantalla(a);
+		w = 66;
+        imprimirPantalla(w);
 	}
+	imprimirPantalla("w " + w);
+
 
 	#################
 	#Probando el iterador DO WHILE
@@ -30,22 +39,32 @@ ALGORITMO pruebas(a, b, c):
 	hacer{
 		a=a+1;
 		imprimirPantalla(a);
+		w = 77;
+        imprimirPantalla(w);
 	}mientras a<10
+	imprimirPantalla("w " + w);
+
 
 	#################
-	#Probando el condicional SWITCH 
+	#Probando el condicional SWITCH
 	a=1;
 	seleccionar a {
-		caso 1: imprimirPantalla(1);
+		caso 1: imprimirPantalla(1); w = 77; imprimirPantalla(w); romper;
 		caso 2: imprimirPantalla(2);
 		defecto: imprimirPantalla("Defecto");
 	}
+	imprimirPantalla("w " + w);
+
 
 	#################
 	#Probando el iterador FOR
 	para a=-8; a<=10; a=a+1 {
 		imprimirPantalla(a);
+		w = 88;
+        imprimirPantalla(w);
 	}
+	imprimirPantalla("w " + w);
+
 
 	#################
 	#Probando imprimir expresiones
@@ -54,11 +73,13 @@ ALGORITMO pruebas(a, b, c):
 	imprimirPantalla (2>=5);
 	imprimirPantalla (5==(2+2*2-1));
 
+
 	#################
 	#Probando asignaciones
 	a = "Hola";
 	b = "Mundo";
 	imprimirPantalla (a + " " + b);
+
 
 	#################
 	#Probando ejecución de funciones predefinidas
@@ -67,6 +88,7 @@ ALGORITMO pruebas(a, b, c):
 	imprimirPantalla (csc(cos(sen(tan(sec(pi))))));
 	a = 2.3e15+2i+2+i;
 	imprimirPantalla (2.2+2i+a);
+
 
 	#################
 	#Probando vectores y matrices
@@ -86,41 +108,53 @@ ALGORITMO pruebas(a, b, c):
 	imprimirPantalla (c[1][2]);
 	imprimirPantalla (c[2][0]);
 
+
 	#################
 	#Definición de un procedimiento
 	def a (x, y) {
 		imprimirPantalla(x);
+		w = 99;
+        	imprimirPantalla(w);
 	}
 	b = a(1,2);
 	c = a(55,10);
+	imprimirPantalla("w " + w);
+
+
 	def a (x, y) {
 		imprimirPantalla(x+y);
 	}
 	d = a(32,5);
-	
+
+
 	#Definición de una función que retorna un STRING
 	def cadena b(x){
 		imprimirPantalla (2+2);
+		w = 77;
+        imprimirPantalla(w);
 		retornar "hola"+" "+x;
 	}
-	
+
+
 	c = b("camilo");
 	imprimirPantalla (c);
 
-	#Definición del factorial de 'x', definida iterativamente
-	def entero f(x){
-		aux = 1;
-		para (i=x; i>0; i=i-1) {
-			aux = aux * i;
+
+
+	def entero f(n){
+		pr = 1;
+		para j=1;j<=n;j = j+1 {
+			pr = pr * j;
 		}
-		retornar aux;	
+		retornar pr;
 	}
-	d = f(10);
-	imprimirPantalla (d);
+
+
+	imprimirPantalla("Factorial iterativo de 15 = " + f(15));
 
 	#Definición recursiva del factorial de 'y'
 	def entero g(y){
-		res = 0;
+		res = 1;
 		si y < 2 {
 			res = 1;
 		}
@@ -129,29 +163,58 @@ ALGORITMO pruebas(a, b, c):
 		}
 		retornar res;
 	}
-	e = g(10);
-	imprimirPantalla (e);
-	
+	e = g(15);
+	imprimirPantalla ("Factorial recursivo de 15 = " + e);
+
+	imprimirPantalla("");
+
+	#Definición recursiva de sumatoria hasta n
+	def entero sumatoria(y){
+		res = 0;
+		si y == 0 {
+			res = 0;
+		}
+		si_no {
+			res = y + sumatoria(y-1);
+		}
+		retornar res;
+	}
+	e = sumatoria(15);
+	imprimirPantalla ("Sumatoria de 15 = " + e);
+
+	imprimirPantalla("");
+
 	#Escribir en archivos
 	limpiarArchivo("file.txt");
 
-	imprimirArchivo("file.txt", 1);
-
-	para i = 0; i < tamanoArchivo("file.txt"); i=i+1 {
+	para i = 0; i < 5; i=i+1 {
 		#imprimirArchivo("file.txt", 1);
-		imprimirPantalla(sen(3.1415)*50*1);
-		#imprimirArchivo("file.txt", sen(3.1415)*50*1);
+		#imprimirPantalla(sen(3.1415)*50*1);
+		imprimirArchivo("file.txt", i + " " + sen(3.1415)*50*i);
 	}
 
 	para i = 0; i < tamanoArchivo("file.txt"); i=i+1 {
-		a = leerArchivo("file.txt", i);
-		imprimirPantalla(a);
-	}
+    	a = leerArchivo("file.txt", i);
+    	imprimirPantalla(a);
+    }
 
+    imprimirPantalla("");
 
 	para i = 0; i < 5; i=i+1 {
-    		u = aleatorio(5,10);
-    		imprimirPantalla(u);
+    	u = aleatorio(5,10);
+    	imprimirPantalla(i + " " + u);
     }
+
+    a = leerTeclado("entero", "Ingrese un numero entero: ");
+    imprimirPantalla(a);
+
+    a = leerTeclado("real", "Ingrese un numero real: ");
+    imprimirPantalla(a);
+
+    a = leerTeclado("cadena", "Ingrese una cadena: ");
+    imprimirPantalla(a);
+
+    a = leerTeclado("complejo", "Ingrese un numero complejo: ");
+    imprimirPantalla(a);
 }
 .

@@ -1,0 +1,8 @@
+ALGORITMO pruebas(a, b, c):
+{
+	imprimirPantalla(a);
+	imprimirPantalla(b);
+	imprimirPantalla(c);
+	retornar a+b;
+}
+.

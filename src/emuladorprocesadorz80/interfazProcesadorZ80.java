@@ -123,6 +123,9 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
         tituloCaja1 = new javax.swing.JLabel();
         cargarCodigo1 = new javax.swing.JButton();
         completoPaso1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtOutput = new javax.swing.JTextArea();
+        jLabel28 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         pasoPaso = new javax.swing.JButton();
         completoPaso = new javax.swing.JButton();
@@ -619,24 +622,32 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
 
         codigoFuenteAlto.setColumns(20);
         codigoFuenteAlto.setRows(5);
+        codigoFuenteAlto.setText("ALGORITMO pruebas(a, b, c):\n{\n\t/* comentario simple */\n        /* multilinea\n\t\tcomentando\t*/\n\n\t#Probando condicional IF\n\ta = 1;\n\tsi (a>2) entonces{\n\t\timprimirPantalla(\"hola\");\n\t} \n\tsi_no si a==1{\n\t\timprimirPantalla(a);\n\t}\n\tsi_no {\n\t\timprimirPantalla(5);\n\t}\n\n\t#########################\n\t#Probando el iterador WHILE\n\ta=10;\n\tmientras a>2{\n\t\ta=a-1;\n\t\timprimirPantalla(a);\n\t}\n\n\t#################\n\t#Probando el iterador DO WHILE\n\ta=0;\n\thacer{\n\t\ta=a+1;\n\t\timprimirPantalla(a);\n\t}mientras a<10\n\n\t#################\n\t#Probando el condicional SWITCH \n\ta=1;\n\tseleccionar a {\n\t\tcaso 1: imprimirPantalla(1);\n\t\tcaso 2: imprimirPantalla(2);\n\t\tdefecto: imprimirPantalla(\"Defecto\");\n\t}\n\n\t#################\n\t#Probando el iterador FOR\n\tpara a=-8; a<=10; a=a+1 {\n\t\timprimirPantalla(a);\n\t}\n\n\t#################\n\t#Probando imprimir expresiones\n\timprimirPantalla (verdadero && falso);\n\timprimirPantalla (!falso || !verdadero);\n\timprimirPantalla (2>=5);\n\timprimirPantalla (5==(2+2*2-1));\n\n\t#################\n\t#Probando asignaciones\n\ta = \"Hola\";\n\tb = \"Mundo\";\n\timprimirPantalla (a + \" \" + b);\n\n\t#################\n\t#Probando ejecución de funciones predefinidas\n\timprimirPantalla (sen(2));\n\tpi=3.1415926;\n\timprimirPantalla (csc(cos(sen(tan(sec(pi))))));\n\ta = 2.3e15+2i+2+i;\n\timprimirPantalla (2.2+2i+a);\n\n\t#################\n\t#Probando vectores y matrices\n\tb = {2,3,4,5};\n\timprimirPantalla (b+b);\n\tc = {9,10,12,20};\n\timprimirPantalla (c-b);\n\timprimirPantalla (b+b+b);\n\tc = {{2,1,5},{2,2,9},{3,4,-1}};\n\timprimirPantalla (\"\");\n\timprimirMatriz (c);\n\timprimirPantalla (\"\");\n\timprimirPantalla (c+c);\n\timprimirPantalla (c*c);\n\timprimirPantalla (c-c);\n\timprimirPantalla (c[0][0]);\n\timprimirPantalla (c[1][2]);\n\timprimirPantalla (c[2][0]);\n\n\t#################\n\t#Definición de un procedimiento\n\tdef a (x, y) {\n\t\timprimirPantalla(x);\n\t}\n\tb = a(1,2);\n\tc = a(55,10);\n\tdef a (x, y) {\n\t\timprimirPantalla(x+y);\n\t}\n\td = a(32,5);\n\t\n\t#Definición de una función que retorna un STRING\n\tdef cadena b(x){\n\t\timprimirPantalla (2+2);\n\t\tretornar \"hola\"+\" \"+x;\n\t}\n\t\n\tc = b(\"camilo\");\n\timprimirPantalla (c);\n\n\t#Definición del factorial de 'x', definida iterativamente\n\tdef entero f(x){\n\t\taux = 1;\n\t\tpara (i=x; i>0; i=i-1) {\n\t\t\taux = aux * i;\n\t\t}\n\t\tretornar aux;\t\n\t}\n\td = f(10);\n\timprimirPantalla (d);\n\n\t#Definición recursiva del factorial de 'y'\n\tdef entero g(y){\n\t\tres = 0;\n\t\tsi y < 2 {\n\t\t\tres = 1;\n\t\t}\n\t\tsi_no {\n\t\t\tres = y * g(y-1);\n\t\t}\n\t\tretornar res;\n\t}\n\te = g(10);\n\timprimirPantalla (e);\n\t\n\t#Escribir en archivos\n\tlimpiarArchivo(\"file.txt\");\n\n\timprimirArchivo(\"file.txt\", 1);\n\n\tpara i = 0; i < tamanoArchivo(\"file.txt\"); i=i+1 {\n\t\t#imprimirArchivo(\"file.txt\", 1);\n\t\timprimirPantalla(sen(3.1415)*50*1);\n\t\t#imprimirArchivo(\"file.txt\", sen(3.1415)*50*1);\n\t}\n\n\tpara i = 0; i < tamanoArchivo(\"file.txt\"); i=i+1 {\n\t\ta = leerArchivo(\"file.txt\", i);\n\t\timprimirPantalla(a);\n\t}\n\n\n\tpara i = 0; i < 5; i=i+1 {\n    \t\tu = aleatorio(5,10);\n    \t\timprimirPantalla(u);\n    }\n}\n.");
         jScrollPane2.setViewportView(codigoFuenteAlto);
 
         tituloCaja1.setFont(new java.awt.Font("Bookman Old Style", 2, 14)); // NOI18N
         tituloCaja1.setText("Ingrese aquí su codigo en alto nivel");
 
-        cargarCodigo1.setText("Cargar Codigo");
+        cargarCodigo1.setText("Compilar");
         cargarCodigo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cargarCodigo1ActionPerformed(evt);
             }
         });
 
-        completoPaso1.setText("Ejecucion Completa");
+        completoPaso1.setText("Ejecutar");
         completoPaso1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 completoPaso1ActionPerformed(evt);
             }
         });
+
+        txtOutput.setEditable(false);
+        txtOutput.setColumns(20);
+        txtOutput.setRows(5);
+        jScrollPane3.setViewportView(txtOutput);
+
+        jLabel28.setText("SALIDA");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -645,17 +656,21 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cargarCodigo1)
-                        .addGap(18, 18, 18)
-                        .addComponent(completoPaso1)
-                        .addGap(18, 18, 18)
-                        .addComponent(resetButton1)
-                        .addGap(133, 133, 133))
+                    .addComponent(jLabel28)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(tituloCaja1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane3)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cargarCodigo1)
+                                .addGap(18, 18, 18)
+                                .addComponent(completoPaso1)
+                                .addGap(18, 18, 18)
+                                .addComponent(resetButton1)
+                                .addGap(133, 133, 133))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tituloCaja1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)))))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -664,7 +679,11 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(tituloCaja1)
                 .addGap(24, 24, 24)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel28)
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cargarCodigo1)
@@ -954,8 +973,37 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "El archivo no fue guardado con éxito en la ruta establecida");
         }
         if(bool){
-            JOptionPane.showMessageDialog(rootPane, "El archivo fue guardado con éxito en la ruta establecida");
+            //Comienza Análisis Léxico
+            int tokens=0;
+        txtOutput.append("COMPILANDO...\n");
+        txtOutput.append("1. COMIENZA ANÁLISIS LÉXICO...\n");
+        txtOutput.append("\n");
+        try {
+            BufferedReader buffer = new BufferedReader(new FileReader("altonivel.txt"));
+            AnalizadorLexico analizadorJFlex = new AnalizadorLexico(buffer);
+
+            while (true) {
+                TokenPersonalizado token = analizadorJFlex.yylex();
+
+                if (!analizadorJFlex.existenTokens()) {
+                    break;
+                }
+                tokens++;
+                System.out.println(token.toString());
+                txtOutput.append(token.toString()+"\n");
+            }
+            txtOutput.append("\n");
+            txtOutput.append("-ANÁLISIS LÉXICO COMPLETADO CON ÉXITO-\n");
+            txtOutput.append("- "+tokens+" Tokens encontrados-");
+        } catch (Exception e) {
+            txtOutput.append("-ERROR-\n");
+            txtOutput.append(e.toString());
+            System.out.println(e.toString());
         }
+        //Finaliza Análisis Léxico
+        }
+        
+        
 
     }//GEN-LAST:event_cargarCodigo1ActionPerformed
 
@@ -1289,6 +1337,7 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
@@ -1306,6 +1355,7 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel panelA;
     private javax.swing.JPanel panelF;
@@ -1347,6 +1397,7 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
     private javax.swing.JLabel tituloCaja;
     private javax.swing.JLabel tituloCaja1;
     private javax.swing.JLabel txtBuffer;
+    private javax.swing.JTextArea txtOutput;
     // End of variables declaration//GEN-END:variables
 
 }

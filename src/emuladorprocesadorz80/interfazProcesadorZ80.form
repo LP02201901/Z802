@@ -919,18 +919,24 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="35" max="-2" attributes="0"/>
-                              <Component id="cargarCodigo1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="completoPaso1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="resetButton1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="tituloCaja1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jScrollPane2" alignment="0" min="-2" pref="491" max="-2" attributes="0"/>
+                          <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jScrollPane3" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace pref="35" max="-2" attributes="0"/>
+                                      <Component id="cargarCodigo1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="completoPaso1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="resetButton1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="tituloCaja1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane2" alignment="0" pref="491" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace pref="43" max="32767" attributes="0"/>
@@ -943,7 +949,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tituloCaja1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="414" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="248" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="136" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cargarCodigo1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -975,6 +985,7 @@
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
+                    <Property name="text" type="java.lang.String" value="ALGORITMO pruebas(a, b, c):&#xa;{&#xa;&#x9;/* comentario simple */&#xa;        /* multilinea&#xa;&#x9;&#x9;comentando&#x9;*/&#xa;&#xa;&#x9;#Probando condicional IF&#xa;&#x9;a = 1;&#xa;&#x9;si (a&gt;2) entonces{&#xa;&#x9;&#x9;imprimirPantalla(&quot;hola&quot;);&#xa;&#x9;} &#xa;&#x9;si_no si a==1{&#xa;&#x9;&#x9;imprimirPantalla(a);&#xa;&#x9;}&#xa;&#x9;si_no {&#xa;&#x9;&#x9;imprimirPantalla(5);&#xa;&#x9;}&#xa;&#xa;&#x9;#########################&#xa;&#x9;#Probando el iterador WHILE&#xa;&#x9;a=10;&#xa;&#x9;mientras a&gt;2{&#xa;&#x9;&#x9;a=a-1;&#xa;&#x9;&#x9;imprimirPantalla(a);&#xa;&#x9;}&#xa;&#xa;&#x9;#################&#xa;&#x9;#Probando el iterador DO WHILE&#xa;&#x9;a=0;&#xa;&#x9;hacer{&#xa;&#x9;&#x9;a=a+1;&#xa;&#x9;&#x9;imprimirPantalla(a);&#xa;&#x9;}mientras a&lt;10&#xa;&#xa;&#x9;#################&#xa;&#x9;#Probando el condicional SWITCH &#xa;&#x9;a=1;&#xa;&#x9;seleccionar a {&#xa;&#x9;&#x9;caso 1: imprimirPantalla(1);&#xa;&#x9;&#x9;caso 2: imprimirPantalla(2);&#xa;&#x9;&#x9;defecto: imprimirPantalla(&quot;Defecto&quot;);&#xa;&#x9;}&#xa;&#xa;&#x9;#################&#xa;&#x9;#Probando el iterador FOR&#xa;&#x9;para a=-8; a&lt;=10; a=a+1 {&#xa;&#x9;&#x9;imprimirPantalla(a);&#xa;&#x9;}&#xa;&#xa;&#x9;#################&#xa;&#x9;#Probando imprimir expresiones&#xa;&#x9;imprimirPantalla (verdadero &amp;&amp; falso);&#xa;&#x9;imprimirPantalla (!falso || !verdadero);&#xa;&#x9;imprimirPantalla (2&gt;=5);&#xa;&#x9;imprimirPantalla (5==(2+2*2-1));&#xa;&#xa;&#x9;#################&#xa;&#x9;#Probando asignaciones&#xa;&#x9;a = &quot;Hola&quot;;&#xa;&#x9;b = &quot;Mundo&quot;;&#xa;&#x9;imprimirPantalla (a + &quot; &quot; + b);&#xa;&#xa;&#x9;#################&#xa;&#x9;#Probando ejecuci&#xf3;n de funciones predefinidas&#xa;&#x9;imprimirPantalla (sen(2));&#xa;&#x9;pi=3.1415926;&#xa;&#x9;imprimirPantalla (csc(cos(sen(tan(sec(pi))))));&#xa;&#x9;a = 2.3e15+2i+2+i;&#xa;&#x9;imprimirPantalla (2.2+2i+a);&#xa;&#xa;&#x9;#################&#xa;&#x9;#Probando vectores y matrices&#xa;&#x9;b = {2,3,4,5};&#xa;&#x9;imprimirPantalla (b+b);&#xa;&#x9;c = {9,10,12,20};&#xa;&#x9;imprimirPantalla (c-b);&#xa;&#x9;imprimirPantalla (b+b+b);&#xa;&#x9;c = {{2,1,5},{2,2,9},{3,4,-1}};&#xa;&#x9;imprimirPantalla (&quot;&quot;);&#xa;&#x9;imprimirMatriz (c);&#xa;&#x9;imprimirPantalla (&quot;&quot;);&#xa;&#x9;imprimirPantalla (c+c);&#xa;&#x9;imprimirPantalla (c*c);&#xa;&#x9;imprimirPantalla (c-c);&#xa;&#x9;imprimirPantalla (c[0][0]);&#xa;&#x9;imprimirPantalla (c[1][2]);&#xa;&#x9;imprimirPantalla (c[2][0]);&#xa;&#xa;&#x9;#################&#xa;&#x9;#Definici&#xf3;n de un procedimiento&#xa;&#x9;def a (x, y) {&#xa;&#x9;&#x9;imprimirPantalla(x);&#xa;&#x9;}&#xa;&#x9;b = a(1,2);&#xa;&#x9;c = a(55,10);&#xa;&#x9;def a (x, y) {&#xa;&#x9;&#x9;imprimirPantalla(x+y);&#xa;&#x9;}&#xa;&#x9;d = a(32,5);&#xa;&#x9;&#xa;&#x9;#Definici&#xf3;n de una funci&#xf3;n que retorna un STRING&#xa;&#x9;def cadena b(x){&#xa;&#x9;&#x9;imprimirPantalla (2+2);&#xa;&#x9;&#x9;retornar &quot;hola&quot;+&quot; &quot;+x;&#xa;&#x9;}&#xa;&#x9;&#xa;&#x9;c = b(&quot;camilo&quot;);&#xa;&#x9;imprimirPantalla (c);&#xa;&#xa;&#x9;#Definici&#xf3;n del factorial de &apos;x&apos;, definida iterativamente&#xa;&#x9;def entero f(x){&#xa;&#x9;&#x9;aux = 1;&#xa;&#x9;&#x9;para (i=x; i&gt;0; i=i-1) {&#xa;&#x9;&#x9;&#x9;aux = aux * i;&#xa;&#x9;&#x9;}&#xa;&#x9;&#x9;retornar aux;&#x9;&#xa;&#x9;}&#xa;&#x9;d = f(10);&#xa;&#x9;imprimirPantalla (d);&#xa;&#xa;&#x9;#Definici&#xf3;n recursiva del factorial de &apos;y&apos;&#xa;&#x9;def entero g(y){&#xa;&#x9;&#x9;res = 0;&#xa;&#x9;&#x9;si y &lt; 2 {&#xa;&#x9;&#x9;&#x9;res = 1;&#xa;&#x9;&#x9;}&#xa;&#x9;&#x9;si_no {&#xa;&#x9;&#x9;&#x9;res = y * g(y-1);&#xa;&#x9;&#x9;}&#xa;&#x9;&#x9;retornar res;&#xa;&#x9;}&#xa;&#x9;e = g(10);&#xa;&#x9;imprimirPantalla (e);&#xa;&#x9;&#xa;&#x9;#Escribir en archivos&#xa;&#x9;limpiarArchivo(&quot;file.txt&quot;);&#xa;&#xa;&#x9;imprimirArchivo(&quot;file.txt&quot;, 1);&#xa;&#xa;&#x9;para i = 0; i &lt; tamanoArchivo(&quot;file.txt&quot;); i=i+1 {&#xa;&#x9;&#x9;#imprimirArchivo(&quot;file.txt&quot;, 1);&#xa;&#x9;&#x9;imprimirPantalla(sen(3.1415)*50*1);&#xa;&#x9;&#x9;#imprimirArchivo(&quot;file.txt&quot;, sen(3.1415)*50*1);&#xa;&#x9;}&#xa;&#xa;&#x9;para i = 0; i &lt; tamanoArchivo(&quot;file.txt&quot;); i=i+1 {&#xa;&#x9;&#x9;a = leerArchivo(&quot;file.txt&quot;, i);&#xa;&#x9;&#x9;imprimirPantalla(a);&#xa;&#x9;}&#xa;&#xa;&#xa;&#x9;para i = 0; i &lt; 5; i=i+1 {&#xa;    &#x9;&#x9;u = aleatorio(5,10);&#xa;    &#x9;&#x9;imprimirPantalla(u);&#xa;    }&#xa;}&#xa;."/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -989,7 +1000,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="cargarCodigo1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cargar Codigo"/>
+                <Property name="text" type="java.lang.String" value="Compilar"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cargarCodigo1ActionPerformed"/>
@@ -997,11 +1008,32 @@
             </Component>
             <Component class="javax.swing.JButton" name="completoPaso1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ejecucion Completa"/>
+                <Property name="text" type="java.lang.String" value="Ejecutar"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="completoPaso1ActionPerformed"/>
               </Events>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="txtOutput">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="rows" type="int" value="5"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="jLabel28">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="SALIDA"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
