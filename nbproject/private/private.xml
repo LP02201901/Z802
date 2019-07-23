@@ -3,10 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Andrey/Desktop/Z802/src/Assets/Codigo3.z80</file>
             <file>file:/C:/Users/Andrey/Desktop/Z802/src/emuladorprocesadorz80/AnalizadorSintactico.java</file>
             <file>file:/C:/Users/Andrey/Desktop/Z802/src/Assets/Codigo.z80</file>
             <file>file:/C:/Users/Andrey/Desktop/Z802/src/Assets/Codigo2.z80</file>
+=======
+            <file>file:/Users/Sunny/Documents/Unal/201901/Lenguajes%20de%20Programacion/Z802006/src/Assets/AnalizadorLexico.flex</file>
+            <file>file:/Users/Sunny/Documents/Unal/201901/Lenguajes%20de%20Programacion/Z802006/src/Assets/AnalizadorSintactico.cup</file>
+>>>>>>> d62eae1b8b0c27ae79ba9bd61447097f4f553f52
         </group>
     </open-files>
 </project-private>

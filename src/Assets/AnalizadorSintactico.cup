@@ -1,5 +1,5 @@
- 
-   
+
+
 /* ---------------Seccion de declaraciones preliminares--------------------*/
 package ejemplocup;
 
@@ -42,7 +42,7 @@ parser code {:
             AnalizadorSintactico asin = new AnalizadorSintactico(
                     new AnalizadorLexico( new FileReader(args[0])));
             Object result = asin.parse().value;
-            System.out.println("\n*** Resultados finales ***");
+            System.out.println("\n** Resultados finales **");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -57,17 +57,32 @@ parser code {:
 
    Terminales que no tienen un valor son listados primero, los terminales que
    tienen un valor como los enteros son listados en la segunda o demas lineas. */
-terminal           SEMI, OP_SUMA, OP_RESTA, OP_MULT, PARENIZQ, PARENDER;
-terminal Integer   ENTERO;
+terminal SaltoDeLinea, Punto, Espacio, tabulador, ALGORITMO, TERMINA, ENTONCES, O, Y, IGUAL;
+terminal DIFERENTE, MAYOR, MENOR, MAY_IGUAL, MEN_IGUAL, SUMA, MENOS, MULT, DIV, MOD, POTENCIA, NO, DEF, RETORNAR;
+terminal INT, FLOAT, STRING, BOOL, MATRIZ, VECTOR, PCOMA, ASIGNAR, PAREN_AP, PAREN_CI, LLAVEIZ, LLAVEDE, ANGIZ;
+terminal ANGDE, COMA, DOSPUNTOS, VERDADERO, FALSO, NULO, SI, SI_NO, MIENTRAS, SELECCIONAR, CASO, ROMPER, HACER;
+terminal PARA, DEFECTO, i, ESPACIO, COMILLAS_D, exp, masme;
+
+terminal Integer Digito5, Digito6
+terminal Char Letra
    
 /* No terminales usados en la seccion gramatical. 
 
    Primero se lista los no terminales que tienen un valor Object y despues
    se lista los no terminales que tienen un entero. Un Object se refiere a que
    no tienen tipo, pudiendo ser entero o String. */
-non terminal Object     expr_list, expr_part;
-non terminal Integer    expr, factor, termino;
-   
+non terminal Integer ENTERO, Digito, Numero;
+non terminal Double REAL;
+non terminal String CADENA;
+non terminal Char Alfanumerico2;
+non terminal String Alfanumerico, Alfanumerico_esp1, Alfanumerico_esp;
+non terminal Object COMENTARIO, IDENTIFICADOR, algoritmo, lista_ids, expresion_mat, expresion_log, variable;
+non terminal Object lista_parsv, conjunto, tipo, bloque, sec_proposiciones, proposicion, asignacion, si_senten;
+non terminal Object bloque_condicional, mientras_senten, hacer_mientras_senten, seleccionar_senten, casos;
+non terminal Object para_senten, fun_senten, proc_senten, funcion, op_arit, op_comp, param, params, si_no_si_senten;
+non terminal Object com_asig
+
+
 
 /* -------------Seccion de predencia y asociacion de los terminales----------- */
    
@@ -81,88 +96,166 @@ non terminal Integer    expr, factor, termino;
 
 /* ------------------- Seccion de la gramatica ------------------------ */
    
-/* La gramatica de nuestro analizador.
+/* La gramatica de nuestro analizador.*/
    
-   expr_list ::=   expr_list expr_part
-                 | expr_part
-   expr_part ::=   expr SEMI
-   expr      ::=   expr PLUS factor
-                 | expr MINUS factor
-                 | factor
-   factor    ::=   factor TIMES term
-                 | factor DIVIDE term
-                 | term
-   term     ::=    LPAREN expr RPAREN
-                 | NUMBER
-                 | ID     
-*/
-   
-/* 'expr_list' es la raiz de la gramatica. Una 'expr_list' puede ser una 'expr_list'
-   seguida de una expr_part, o puede ser una expr_part.
-   Un terminal o no terminal se define <termino> ::= termino1 termino2 ... terminoN.;
-   donde termino puede ser terminal o no terminal, solo se permite un simbolo a la
-   izquierda. La | sirve para indicar que es una produccion u otra.
-   Debemos pasar de simbolos no terminales a simbolos terminales. Una gramatica que no
-   termina en simbolos terminales se dice que no reduce, y por lo tanto nunca se finaliza
-   su procesado.
-*/
-   
-    expr_list ::= expr_list expr_part
-                  |
-                  expr_part
-                  ;
-/* 'expr_part' se compone de una expr seguida de SEMI, o de una asign seguida de SEMI.
-   asign:a esta estableciendo que a representa al objeto asociado a asign, entre {: :}
-   se coloca el sodigo en java para las acciones a tomar al cumplirse una produccion.
-*/
-   
-   expr_part ::= expr:e
-                  {:
-                    System.out.println(" = " + e); 
-                  :} 
-                  SEMI
-                 ;
-                  
-/* 'expr' puede ser una expresion que inicia por numero entero op_suma expr,
-  de esa forma se realiza una suma. Tambien puede ser un numero entero, con esto
-  se devuelve el valor del entero. En RESULT se almacena el valor de las acciones,
-  y se pasa al siguiente nivel de la gramatica.
-*/              
+   //Símbolo inicial
+    algoritmo ::= ALGORITMO IDENTIFICADOR PAREN_AP lista_ids PAREN_CI DOSPUNTOS bloque TERMINA
+                | ALGORITMO IDENTIFICADOR DOSPUNTOS bloque TERMINA
 
-   expr      ::=  expr:e OP_SUMA factor:f
-                  {:
-                    RESULT = new Integer(e.intValue() + f.intValue());
-                  :}
-                  |
-                  expr:e OP_RESTA factor:f
-                  {:
-                    RESULT = new Integer(e.intValue() - f.intValue());
-                  :}
-                  |
-                  factor:n
-                  {:
-                    RESULT = n; 
-                  :}
-                  ;
 
-factor        ::=  factor:f OP_MULT termino:e
-                  {:
-                    RESULT = new Integer(f.intValue() * e.intValue());
-                  :}
-                  |
-                  termino:t
-                  {:
-                    RESULT = t;
-                  :}
-                  ;
+    //Lista de identificadores
+    lista_ids ::= IDENTIFICADOR COMA lista_ids
+                | IDENTIFICADOR
 
-termino       ::=  PARENIZQ expr:e PARENDER
-                  {:
-                    RESULT = e;
-                  :}
-                  |
-                  ENTERO:e
-                  {:
-                    RESULT = e;
-                  :}
-                  ; 
+    //Ecuaciones
+    ecuaciones ::= variable op_comp expresion_mat
+                | expresion_log
+
+    //Expresiones matematicas
+    expresion_mat ::= PAREN_AP expresion_mat PAREN_CI
+                    | expresion_mat op_arit expresion_mat
+                    | PAREN_AP MENOS PAREN_AP expresion_mat PAREN_CI PAREN_CI
+                    | ENTERO
+                    | REAL
+                    | variable 
+
+    //Expresiones logicas
+    expresion_log ::= PAREN_AP expresion_log PAREN_CI
+                    | expresion_log op_log expresion_log
+                    | PAREN_AP NO PAREN_AP expresion_log PAREN_CI PAREN_CI
+                    | variable
+
+    //Definición de variable
+    variable ::= IDENTIFICADOR conjunto
+                | IDENTIFICADOR
+
+    //Parametro
+    param ::= variable
+            | expresion_mat
+            | expresion_log
+
+    //Parametros
+    params ::= param COMA params
+            | param
+
+    //Lista de parámetros
+    lista_parsv ::= PAREN_AP params PAREN_CI
+
+
+    //Definición de conjunto
+    conjunto ::= LLAVEIZ params LLAVEDE
+
+
+    //Identificador de tipo de retorno
+    tipo ::= INT 
+            | FLOAT 
+            | STRING 
+            | BOOL 
+            | MATRIZ 
+            | VECTOR
+
+    //Bloque
+    bloque ::= LLAVEIZ LLAVEDE
+            | LLAVEIZ sec_proposiciones LLAVEDE
+
+
+    //Secuenciación
+    sec_proposiciones ::= proposicion sec_proposiciones
+                        | proposicion
+
+
+    //Conjunto de posibles sentencias
+    proposicion ::= RETORNAR expresion_mat PCOMA
+                | RETORNAR expresion_log PCOMA
+                | fun_senten
+                | proc_senten
+                | si_senten
+                | seleccionar_senten
+                | mientras_senten
+                | para_senten
+                | hacer_mientras_senten
+                | asignacion PCOMA
+                | IDENTIFICADOR lista_parsv PCOMA //Llamar función o procedimiento
+                | LLAVEIZ sec_proposiciones LLAVEDE
+                | OTRO
+
+
+    //Modo de asignación
+    asignacion ::= IDENTIFICADOR ASIGNAR expresion_mat  #asigNum
+                | IDENTIFICADOR ASIGNAR expresion_log
+                | IDENTIFICADOR ASIGNAR conjunto   #asigVec
+
+    //Seleccion si no si
+    si_no_si_senten ::= SI_NO SI bloque_condicional si_no_senten
+                    | SI_NO SI bloque_condicional
+
+    //Selección IF
+    si_senten ::= SI bloque_condicional si_no_si_senten
+                | SI bloque_condicional
+                | SI bloque_condicional si_no_si_senten
+
+    //Expresión a evaluar y bloque de sentencias a ejecutar
+    bloque_condicional ::= expresion_log ENTONCES bloque
+                        | ecuaciones ENTONCES bloque
+
+    //Iteración WHILE
+    mientras_senten ::= MIENTRAS bloque_condicional
+
+
+    //Iteración DO WHILE
+    hacer_mientras_senten ::= HACER bloque MIENTRAS ecuacion
+
+
+    //Selección SWITCH
+    seleccionar_senten ::= SELECCIONAR IDENTIFICADOR LLAVEIZ casos LLAVEDE
+
+
+    //Bloque de casos del SWITCH
+    casos ::= CASO ecuacion DOSPUNTOS sec_proposiciones ROMPER PCOMA casos
+            | CASO ecuacion DOSPUNTOS sec_proposiciones  casos     #casosGen
+            | DEFECTO DOSPUNTOS sec_proposiciones                                  #casosDef
+
+    //Coma y asignación
+    com_asig ::= COMA asignacion com_asig
+                | COMA asignacion
+
+    //Iteración FOR
+    para_senten ::= PARA asignacion com_asig PCOMA expresion PCOMA asignacion com_asig bloque
+                | PARA asignacion PCOMA expresion PCOMA asignacion com_asig bloque
+                | PARA asignacion com_asig PCOMA expresion PCOMA asignacion bloque
+                | PARA asignacion PCOMA expresion PCOMA asignacion bloque
+                | PARA PAREN_AP asignacion com_asig PCOMA expresion PCOMA asignacion com_asig PAREN_CI bloque
+                | PARA PAREN_AP asignacion PCOMA expresion PCOMA asignacion com_asig PAREN_CI bloque
+                | PARA PAREN_AP asignacion com_asig PCOMA expresion PCOMA asignacion PAREN_CI bloque
+                | PARA PAREN_AP asignacion PCOMA expresion PCOMA asignacion PAREN_CI bloque
+
+    //Función
+    fun_senten ::= DEF tipo IDENTIFICADOR PAREN_AP lista_ids PAREN_CI bloque
+
+
+    //Procedimiento
+    proc_senten ::= DEF IDENTIFICADOR PAREN_AP lista_ids PAREN_CI bloque
+
+
+    //Sentencias de función
+    funcion ::= LLAVEIZ sec_proposiciones PCOMA LLAVEDE
+
+    //Operadores aritmeticos
+    op_arit ::= SUMA
+            | MENOS
+            | MULT
+            | DIV
+            | MOD
+            | POTENCIA
+
+    //Operadores de comparación
+    op_comp ::= IGUAL
+            | DIFERENTE
+            | MAYOR
+            | MENOR
+            | MAY_IGUAL
+            | MEN_IGUAL
+
+    //Operadores logicos
+    op_log ::= O
+            | Y
