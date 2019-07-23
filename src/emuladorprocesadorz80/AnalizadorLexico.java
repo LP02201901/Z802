@@ -8,7 +8,10 @@ package emuladorprocesadorz80;
  * <a href="http://www.jflex.de/">JFlex</a> 1.7.0
  * from the specification file <tt>C:/Users/Andrey/Desktop/Z80/src/Assets/AnalizadorLexico.flex</tt>
  */
-public class AnalizadorLexico {
+import java_cup.runtime.*;
+import java.io.Reader;
+      
+class AnalizadorLexico {
 
   /** This character denotes the end of file */
   public static final int YYEOF = -1;
