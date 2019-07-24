@@ -720,6 +720,7 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
 
         codigoFuenteAssm.setColumns(20);
         codigoFuenteAssm.setRows(5);
+        codigoFuenteAssm.setText("#LD\tA,2\n#LD\t(00FF),A\n#LD\tA,3\n#LD\t(0100),A\n#LD\tA,4\n#LD\t(0101),A\n#LD\tA,5\n#LD\t(0102),A\n#LD\tA,1\n#LD\t(0103),A\n#LD\tA,2\n#LD\t(0104),A\n#LD\tA,3\n#LD\t(0105),A\n#LD\tA,4\n#LD\t(0106),A\n#LD\tL,FF\n#LD\tH,00\n#LD\tB,(HL)\n#LD\tL,03\n#LD\tH,01\n#LD\tC,(HL)\n#LD\tL,01\n#LD\tH,01\n#LD\tD,(HL)\n#LD\tL,04\n#LD\tH,01\n#LD\tE,(HL)\n#LD\tA,0\nfor#ADD\tA,B\n#DEC\tC\n#JP\tNZ,for\n#LD\tH,A\n#LD\tA,0\nfor1#ADD\tA,D\n#DEC\tE\n#JP\tNZ,for1\n#LD\tL,A\n#LD\tA,H\n#ADD\tA,L\n#LD\t(0107),A\n#LD\tL,FF\n#LD\tH,00\n#LD\tB,(HL)\n#LD\tL,05\n#LD\tH,01\n#LD\tC,(HL)\n#LD\tL,01\n#LD\tH,01\n#LD\tD,(HL)\n#LD\tL,06\n#LD\tH,01\n#LD\tE,(HL)\n#LD\tA,0\nfor2#ADD\tA,B\n#DEC\tC\n#JP\tNZ,for2\n#LD\tH,A\n#LD\tA,0\nfor3#ADD\tA,D\n#DEC\tE\n#JP\tNZ,for3\n#LD\tL,A\n#LD\tA,H\n#ADD\tA,L\n#LD\t(0108),A\n#LD\tL,00\n#LD\tH,01\n#LD\tB,(HL)\n#LD\tL,03\n#LD\tH,01\n#LD\tC,(HL)\n#LD\tL,02\n#LD\tH,01\n#LD\tD,(HL)\n#LD\tL,04\n#LD\tH,01\n#LD\tE,(HL)\n#LD\tA,0\nfor4#ADD\tA,B\n#DEC\tC\n#JP\tNZ,for4\n#LD\tH,A\n#LD\tA,0\nfor5#ADD\tA,D\n#DEC\tE\n#JP\tNZ,for5\n#LD\tL,A\n#LD\tA,H\n#ADD\tA,L\n#LD\t(0109),A\n#LD\tL,00\n#LD\tH,01\n#LD\tB,(HL)\n#LD\tL,05\n#LD\tH,01\n#LD\tC,(HL)\n#LD\tL,02\n#LD\tH,01\n#LD\tD,(HL)\n#LD\tL,06\n#LD\tH,01\n#LD\tE,(HL)\n#LD\tA,0\nfor6#ADD\tA,B\n#DEC\tC\n#JP\tNZ,for6\n#LD\tH,A\n#LD\tA,0\nfor7#ADD\tA,D\n#DEC\tE\n#JP\tNZ,for7\n#LD\tL,A\n#LD\tA,H\n#ADD\tA,L\n#LD\t(010A),A\n#LD\tL,07\n#LD\tH,01\n#LD\tB,(HL)\n#LD\tL,08\n#LD\tH,01\n#LD\tC,(HL)\n#LD\tL,09\n#LD\tH,01\n#LD\tD,(HL)\n#LD\tL,0A\n#LD\tH,01\n#LD\tE,(HL)\n#HALT");
         jScrollPane1.setViewportView(codigoFuenteAssm);
 
         tituloCaja.setFont(new java.awt.Font("Bookman Old Style", 2, 14)); // NOI18N
@@ -983,7 +984,7 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "El archivo no fue guardado con éxito en la ruta establecida");
         }
         if(bool){
-            //Comienza Análisis Léxico
+            /*//Comienza Análisis Léxico
             int tokens=0;
         txtOutput.append("COMPILANDO...\n");
         txtOutput.append("1. COMIENZA ANÁLISIS LÉXICO...\n");
@@ -1010,11 +1011,14 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
             txtOutput.append(e.toString());
             System.out.println(e.toString());
         }
-        //Finaliza Análisis Léxico
+        //Finaliza Análisis Léxico*/
+        
+        //Comienza Análisis Sintactico        
+        String[] archivoPrueba = {"altonivel.txt"};
+        AnalizadorSintactico.main(archivoPrueba);
+        System.out.println("Ejecutado!");
+        //Finaliza Análisis Sintactico
         }
-        
-        
-
     }//GEN-LAST:event_cargarCodigo1ActionPerformed
 
     public static void main(String args[]) throws IOException {

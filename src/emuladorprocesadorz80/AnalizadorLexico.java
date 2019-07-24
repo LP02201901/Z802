@@ -8,6 +8,9 @@ package emuladorprocesadorz80;
  * <a href="http://www.jflex.de/">JFlex</a> 1.7.0
  * from the specification file <tt>C:/Users/Andrey/Desktop/Z80/src/Assets/AnalizadorLexico.flex</tt>
  */
+import java_cup.runtime.*;
+import java.io.Reader;
+      
 public class AnalizadorLexico {
 
   /** This character denotes the end of file */
