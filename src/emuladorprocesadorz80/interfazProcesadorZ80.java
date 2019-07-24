@@ -15,6 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.io.File;
 import java.io.FileWriter;
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
 
 public class interfazProcesadorZ80 extends javax.swing.JFrame {
 
@@ -945,7 +948,14 @@ public class interfazProcesadorZ80 extends javax.swing.JFrame {
     }//GEN-LAST:event_cargarCodigoActionPerformed
 
     private void completoPaso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completoPaso1ActionPerformed
-        // TODO add your handling code here:
+        String text = "";
+        String codigo = this.codigoFuenteAlto.getText();
+        compLexer lexer = new compLexer(CharStreams.fromString(codigo));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        compParser parser = new compParser(tokens);
+        ParseTree tree = parser.program();
+        System.out.println(parser.assembler);
+        this.txtOutput.setText(parser.assembler);//prueba
     }//GEN-LAST:event_completoPaso1ActionPerformed
 
     private void resetButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButton1ActionPerformed
