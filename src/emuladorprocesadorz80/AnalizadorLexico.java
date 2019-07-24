@@ -11,7 +11,7 @@ package emuladorprocesadorz80;
 import java_cup.runtime.*;
 import java.io.Reader;
       
-class AnalizadorLexico {
+public class AnalizadorLexico {
 
   /** This character denotes the end of file */
   public static final int YYEOF = -1;

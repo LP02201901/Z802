@@ -7,11 +7,9 @@ package emuladorprocesadorz80;
 
 import java_cup.runtime.*;
 import java.io.FileReader;
-import java_cup.runtime.XMLElement;
 
 /** CUP v0.11b 20160615 (GIT 4ac7450) generated parser.
   */
-@SuppressWarnings({"rawtypes"})
 public class AnalizadorSintactico extends java_cup.runtime.lr_parser {
 
  public final Class getSymbolContainer() {
@@ -450,7 +448,9 @@ public class AnalizadorSintactico extends java_cup.runtime.lr_parser {
     public static void main(String[] args){
         try {
             AnalizadorSintactico asin = new AnalizadorSintactico(
-                    new AnalizadorLexico( new FileReader(args[0])));
+                    (Scanner) new AnalizadorLexico( new FileReader(args[0])));
+            /*AnalizadorSintactico asin = new AnalizadorSintactico(
+                    new AnalizadorLexico("altonivel.txt"));*/
             Object result = asin.parse().value;
             System.out.println("\n** Resultados finales **");
         } catch (Exception ex) {
